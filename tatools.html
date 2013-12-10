@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+	<title>TA Tools</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./css/jquery.mobile-1.3.1.css">
+	<link rel="stylesheet" href="./css/eclipse.css">
+	<script src="./lib/jquery-1.9.1.js"></script>
+	<script src="./lib/jquery.mobile-1.3.1.js"></script>
+	<script src="./lib/eclipse.js"></script>
+</head>
+<body>
+	<div data-role="page">
+	<div data-role="panel" id="setup" data-position="right" data-display="overlay" data-theme="a" data-position-fixed="true" data-dismissible="false">
+		<!-- panel content goes here -->
+		<table id="options">
+			<thead>
+			<tr>
+				<th colspan="2">Settings</th>
+			</tr>			
+			</thead>
+			<tbody>
+			<tr>
+				<td>protocol:</td>
+				<td>
+				<fieldset data-role="controlgroup" data-mini="true">
+					<input type="radio" name="protocol" id="http" value="http" checked="checked" />
+					<label for="http">http</label>
+					<input type="radio" name="protocol" id="https" value="https" />
+					<label for="https">https</label>
+				</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="host">host:</label></td>
+				<td><input type="text" name="host" id="host" value="talos.dcs.bbk.ac.uk" /></td>
+			</tr>
+			<tr>
+				<td><label for="port">port:</label></td>
+				<td><input type="text" name="port" id="port" value="8282" /></td>
+			</tr>
+			<tr>
+				<td><label for="service">service:</label></td>
+				<td><input type="text" name="service" id="service" value="com.lkl.eclipsedata/rest/service" /></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<div data-role="controlgroup">
+				<a href="#" id="nettest" data-role="button" data-icon="search">Network Connectivity</a>
+				<a href="#" id="hosttest" data-role="button" data-icon="search">Host Availability</a>
+				</div>
+				</td>
+			</tr>
+			</tbody>
+			<tfoot>
+			<tr>
+				<td colspan="2">
+				<a href="#setup" data-rel="close" data-role="button" data-icon="back">Close</a></td>
+			</tr>		
+			</tfoot>
+		</table>	
+	</div><!-- /panel -->
+	<div data-role="panel" id="activation" data-position="right" data-display="overlay" data-theme="a" data-position-fixed="true" data-dismissible="false">
+		<!-- panel content goes here -->
+		<table id="options">
+			<thead>
+			<tr>
+				<th>Service</th>
+			</tr>			
+			</thead>
+			<tbody>
+			<tr>
+			<td>
+				<label for="interval">interval</label>
+				<input type="text" name="interval" id="interval" value="5" /></td>
+			</tr>
+			<td>
+				<label for="status">status</label>
+				<input type="text" name="status" id="status" value="stopped" disabled /></td>
+			</tr>
+			<tr>
+				<td>
+					<fieldset data-role="controlgroup" data-type="vertical">
+					<a href="#" id="start" name="activate" data-role="button" data-icon="check">Start</a>
+					<a href="#" id="stop" name="activate" data-role="button" data-icon="delete">Stop</a>
+					</fieldset>
+				</td>
+			</tr>
+			</tbody>
+			<tfoot>
+			<tr>
+				<td>
+				<a href="#setup" data-rel="close" data-role="button" data-icon="back">Close</a></td>
+			</tr>		
+			</tfoot>
+		</table>	
+	</div><!-- /panel -->
+	<div data-role="header" data-position="fixed">
+	<div data-role="controlgroup" data-type="horizontal">
+		<a href="#activation" data-role="button" data-icon="search">Activate</a>
+		<a href="#setup" data-role="button" data-icon="gear">Setup</a>
+	</div>
+	<input type="text" name="statusmessage" id="statusmessage" value="service is currently stopped" disabled /></td>
+	</div><!-- /header -->
+	<div data-role="content" data-theme="b">
+	<div class="panes">
+		<div id="mainview" data-page="mainview">
+			<table data-role="table" class="ui-responsive table-stroke" id="inactiveusers" data-mode="columntoggle">
+				<thead>
+				<tr>
+				<th data-priority='1'>Student</th>
+				<th data-priority='2'>Workstation</th>
+				<th data-priority='3'>Event</th>
+				</tr>
+				</thead>
+				<tbody id="inactiveusersbody">
+				</tbody>
+			</table>
+		</div>
+		<div id="statistics" data-page="statistics" data-count-theme="a">
+			<ul id="database" data-role="listview" data-filter="true">
+			</ul>
+		</div>
+	</div>
+	</div><!-- /content -->
+	<div data-role="footer" data-theme="a" data-position="fixed">
+		 <div id="tabs" data-role="navbar" data-iconpos="bottom">
+			<ul>
+			<li><a data-icon="grid" href="#" data-page="mainview" class="ui-btn-active">Main View</a></li>
+			<li><a data-icon="star" href="#" data-page="statistics">Statistics</a></li>
+			</ul>
+		</div><!-- /navbar -->	</div><!-- /footer -->
+	</div><!-- /page -->
+	<div data-role="page" id="dialogPage" data-transition="flip">
+		<div id="dialogHeader" data-role="header">
+		</div>
+		<div id="dialogContent" data-role="content" align="center">
+		</div>
+	</div>
+</body>
+</html>
